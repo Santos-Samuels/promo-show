@@ -15,7 +15,7 @@ const PromotionCard = ({promotion}) => (
 
                 <div className="space-x-4 font-semibold text-blue-400">
                     <span className="hover:text-blue-500">{ promotion.comments.length } Comentários</span>
-                    <a className="border-2 border-blue-400 rounded-md px-2 py-1 hover:bg-blue-400 hover:text-white transition duration-500 ease-in-out" href={ promotion.url } target="_blank" rel="noopener noreferrer">IR PARA O SITE</a>
+                    <a className="border-2 border-blue-400 rounded-md px-2 py-1 hover:bg-blue-400 hover:text-white transition duration-500 ease-in-out whitespace-nowrap" href={ promotion.url } target="_blank" rel="noopener noreferrer">IR PARA O SITE</a>
                 </div>
             </footer>
         </section>

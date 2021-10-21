@@ -1,24 +1,11 @@
-import PromotionCard from 'components/Promotion/Card'
-import axios from 'axios'
-import { useEffect, useState } from 'react'
+import PromotionSearch from 'components/Promotion/Search'
+import LayoutContainer from 'components/Layout/Container'
  
 const PagesPromotionSearch = () => {
-  const [promotions, setPromotions] = useState([])
-  
-  useEffect(() => {
-    axios.get('http://localhost:5000/promotions?_embed=comments')
-    .then((response) => {
-      setPromotions(response.data)
-    });
-  }, []);
-  
-
   return (
-    <div className="space-y-3">
-      { promotions.map((promotion) => (
-        <PromotionCard promotion={promotion} />
-      )) }
-    </div>
+    <LayoutContainer>
+      <PromotionSearch />
+    </LayoutContainer>
   )
 }
 

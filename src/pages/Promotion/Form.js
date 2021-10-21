@@ -1,14 +1,12 @@
-import { useParams } from "react-router-dom";
+import LayoutContainer from 'components/Layout/Container'
+import PromotionForm from 'components/Promotion/Form'
 
 const PagesPromotionForm = () => {
-    const { id } = useParams()
 
     return (
-        <div>
-            <h1>Promotion form page 
-                {id && <p>id: { id }</p>}
-            </h1>
-        </div>
+        <LayoutContainer>
+            <PromotionForm />
+        </LayoutContainer>
     )
 }
 
