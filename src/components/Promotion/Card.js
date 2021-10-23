@@ -5,7 +5,7 @@ const PromotionCard = ({promotion}) => (
         <section>
             <div className="text-left">
                 <h1 className="font-bold">{ promotion.title }</h1>
-                <span className="text-2xl text-blue-500 font-bold">{ promotion.price.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'}) }</span>
+                <span className="text-2xl text-blue-500 font-bold">{ Number(promotion.price).toLocaleString('pt-br',{style: 'currency', currency: 'BRL'}) }</span>
             </div>
             
             <footer className="flex justify-between items-center mt-1">
