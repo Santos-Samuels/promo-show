@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom'
+
 const PromotionCard = ({promotion}) => (
     <div className="flex items-center space-x-3 text-sm border-2 rounded-md px-3 py-2 shadow-md">
         <img className="w-28 h-28" src={ promotion.imageUrl } alt={promotion.title} />
@@ -16,6 +18,7 @@ const PromotionCard = ({promotion}) => (
                 <div className="space-x-4 font-semibold text-blue-400">
                     <span className="hover:text-blue-500">{ promotion.comments.length } Comentários</span>
                     <a className="border-2 border-blue-400 rounded-md px-2 py-1 hover:bg-blue-400 hover:text-white transition duration-500 ease-in-out whitespace-nowrap" href={ promotion.url } target="_blank" rel="noopener noreferrer">IR PARA O SITE</a>
+                    <Link to={`/edit/${promotion.id}`}>Editar</Link>
                 </div>
             </footer>
         </section>

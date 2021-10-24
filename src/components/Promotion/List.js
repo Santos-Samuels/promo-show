@@ -1,14 +1,15 @@
 import PromotionCard from 'components/Promotion/Card'
+import LoadingAnimation from 'components/Layout/Loading'
 
 const PromotionList = ({ loading, promotions }) => {
     if(loading) {
-        return <div>Carregando...</div>
+        return <LoadingAnimation />
     }
 
     return (
         <div className="space-y-3">
-            { promotions.map((promotion) => (
-                <PromotionCard promotion={promotion} />
+            { promotions.map((promotion, index) => (
+                <PromotionCard promotion={promotion} key={index} />
             )) }
         </div>
     )
