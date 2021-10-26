@@ -1,7 +1,8 @@
-import axios from "axios"
+import useApi from 'components/hook/useApi'
 import { useEffect, useState } from "react"
 import { useHistory } from "react-router-dom"
 import LoadingAnimation from 'components/Layout/Loading'
+import axios from 'axios'
 
 const initialValue = {
     title: '',
@@ -13,14 +14,28 @@ const initialValue = {
 const PromotionForm = ({ id }) => {
     const [values, setValues] = useState(id ? null : initialValue)
     const history = useHistory()
+    const [load] = useApi({
+        url: `/promotions/${id}`,
+        method: 'GET',
+        onCompleted: (response) => {
+            setValues(response.data)
+        }
+    })
+
+    const[save, saveStatus] = useApi({
+        url: id ? `/promotions/${id}` : '/promotions',
+        method: id ? 'PUT' : 'POST',
+        data: values,
+        onCompleted: (response) => {
+            if (!response.error) {
+                history.push('/')
+            }
+        }
+    })
 
     useEffect(() => {
       if(id) {
-          axios.get(`http://localhost:5000/promotions/${id}`)
-          .then((response) => {
-              console.log(response.data);
-              setValues(response.data)
-          })
+          load()
       }      
     }, [id])
 
@@ -32,17 +47,10 @@ const PromotionForm = ({ id }) => {
 
     function onSubmit(ev) {
         ev.preventDefault()
-
-        const method = id ? 'put' : 'post'
-        const url = id ? `http://localhost:5000/promotions/${id}` : 'http://localhost:5000/promotions'
-
-        axios[method](url, values)
-        .then((response) => {
-            history.push('/')
-        })
+        save()
     }
 
-    if(!values) {
+    if (!values) {
         return <LoadingAnimation />
     }
 
@@ -77,6 +85,8 @@ const PromotionForm = ({ id }) => {
                     </div>
                 </div>
             </form>
+
+            {saveStatus.loading && <h1 className="text-gray-500 text-center mt-3">Salvando alterações...</h1>}
         </div>
     )
 }
