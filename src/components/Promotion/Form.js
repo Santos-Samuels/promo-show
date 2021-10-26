@@ -2,7 +2,6 @@ import useApi from 'components/hook/useApi'
 import { useEffect, useState } from "react"
 import { useHistory } from "react-router-dom"
 import LoadingAnimation from 'components/Layout/Loading'
-import axios from 'axios'
 
 const initialValue = {
     title: '',
@@ -36,7 +35,8 @@ const PromotionForm = ({ id }) => {
     useEffect(() => {
       if(id) {
           load()
-      }      
+        }      
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [id])
 
     function onChange(ev) {

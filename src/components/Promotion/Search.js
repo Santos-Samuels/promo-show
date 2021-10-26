@@ -5,6 +5,7 @@ import PromotionList from 'components/Promotion/List'
 const PromotionSearch = () => {
   const [search, setSearch] = useState('')
   const [load, loadStatus] = useApi({
+    debounceDelay: 300,
     url: '/promotions',
     method: 'GET',
     params: {
@@ -17,6 +18,7 @@ const PromotionSearch = () => {
 
   useEffect(() => {
     load()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [search]);
 
   return (
