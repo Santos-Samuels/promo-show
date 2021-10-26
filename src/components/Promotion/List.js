@@ -15,7 +15,7 @@ const PromotionList = ({ loading, promotions, error }) => {
     }
 
     return (
-        <div className="space-y-3">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-3">
             { promotions.map((promotion, index) => (
                 <PromotionCard promotion={promotion} key={index} />
             )) }
