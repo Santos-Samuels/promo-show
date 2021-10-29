@@ -1,6 +1,6 @@
 import PromotionCard from 'components/Promotion/Card'
 import LoadingAnimation from 'components/Layout/Loading'
-import LayoutModal from 'components/Layout/Modal'
+import PromotionCommentsModal from 'components/Promotion/CommentsModal'
 import { useState } from 'react'
 
 const PromotionList = ({ loading, promotions, error }) => {
@@ -24,9 +24,7 @@ const PromotionList = ({ loading, promotions, error }) => {
                 <PromotionCard promotion={promotion} key={index} onClickComments={() => setPromotionId(promotion.id)} />
             )) }
 
-            <LayoutModal isOpen={Boolean(promotionId)} onClickClose={() => setPromotionId(null)}>
-                <h1>Teste</h1>
-            </LayoutModal>
+            { promotionId && <PromotionCommentsModal promotionId={promotionId} onClickClose={() => { setPromotionId(null) }} /> }
 
         </div>
     )

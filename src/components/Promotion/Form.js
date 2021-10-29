@@ -47,7 +47,10 @@ const PromotionForm = ({ id }) => {
 
     function onSubmit(ev) {
         ev.preventDefault()
-        save()
+
+        save({
+            data: values
+        })
     }
 
     if (!values) {
@@ -81,7 +84,7 @@ const PromotionForm = ({ id }) => {
                     </div>
 
                     <div className="self-end">
-                        <button className="bg-blue-500 hover:bg-blue-600 transistion duration-300 ease-in-out border border-gray-300 text-gray-100 font-semibold rounded-md py-1 w-full"> {id ? 'Editar' : 'Adicionar'} </button>
+                        <button disabled={saveStatus.loading} className={"bg-blue-500 hover:bg-blue-600 transistion duration-300 ease-in-out border border-gray-300 text-gray-100 font-semibold rounded-md py-1 w-full" + (saveStatus.loading ? ' opacity-50' : '') }> {id ? 'Editar' : 'Adicionar'} </button>
                     </div>
                 </div>
             </form>
